@@ -77,7 +77,6 @@ X wins
 */
 
 
-package tictactoe
 
 import kotlin.system.exitProcess
 
