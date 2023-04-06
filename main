@@ -1,0 +1,217 @@
+package tictactoe
+
+import kotlin.system.exitProcess
+
+fun gridStart(list: MutableList<String>) {
+    println("---------")
+    println("| ${list[1]} ${list[2]} ${list[3]} |")
+    println("| ${list[4]} ${list[5]} ${list[6]} |")
+    println("| ${list[7]} ${list[8]} ${list[9]} |")
+    println("---------")
+}
+
+fun xOtherO(list: MutableList<String>): String {
+    var result = ""
+    var x = 0
+    var o = 0
+    for (i in list) {
+        if (i == "X") {
+            x++
+        } else if (i == "O") {
+            o++
+        }
+
+    }
+    result += if (o <= x) {
+        "O"
+    } else {
+        "X"
+    }
+    return result
+
+}
+
+fun grid(list: MutableList<String>) {
+    println("---------")
+    println("| ${list[1]} ${list[2]} ${list[3]} |")
+    println("| ${list[4]} ${list[5]} ${list[6]} |")
+    println("| ${list[7]} ${list[8]} ${list[9]} |")
+    println("---------")
+}
+
+fun wins(list: MutableList<String>) {
+    if (list[1] == list[2] && list[2] == list[3] && list[3] != " ") {
+        println("${list[2]} wins")
+        exitProcess(0)
+    }
+    if (list[4] == list[5] && list[5] == list[6] && list[6] != " ") {
+        println("${list[4]} wins")
+        exitProcess(0)
+    }
+    if (list[7] == list[8] && list[8] == list[9] && list[9] != " ") {
+        println("${list[7]} wins")
+        exitProcess(0)
+    }
+    if (list[1] == list[4] && list[4] == list[7] && list[7] != " ") {
+        println("${list[1]} wins")
+        exitProcess(0)
+    }
+    if (list[2] == list[5] && list[5] == list[8] && list[8] != " ") {
+        println("${list[2]} wins")
+        exitProcess(0)
+    }
+    if (list[3] == list[6] && list[6] == list[9] && list[9] != " ") {
+        println("${list[3]} wins")
+        exitProcess(0)
+    }
+    if (list[7] == list[5] && list[5] == list[3] && list[3] != " ") {
+        println("${list[7]} wins")
+        exitProcess(0)
+    }
+    if (list[1] == list[5] && list[5] == list[9] && list[9] != " ") {
+        println("${list[1]} wins")
+        exitProcess(0)
+    }
+}
+
+fun check(list: MutableList<String>) {
+    var x = 0
+    var o = 0
+    for (i in list) {
+        if (i == "X") {
+            x++
+        } else if (i == "O") {
+            o++
+        }
+
+    }
+    if (x == 4 && o == 5 || x == 5 && o == 4) {
+        println("Draw")
+        exitProcess(0)
+    }
+
+}
+
+fun game(list: MutableList<String>) {
+    when (readln()) {
+        "1 1" -> {
+            if (list[1] == "O" || list[1] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[1] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+
+        }
+
+        "1 2" -> {
+            if (list[2] == "O" || list[2] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[2] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "1 3" -> {
+            if (list[3] == "O" || list[3] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[3] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "2 1" -> {
+            if (list[4] == "O" || list[4] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[4] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "2 2" -> {
+            if (list[5] == "O" || list[5] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[5] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "2 3" -> {
+            if (list[6] == "O" || list[6] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[6] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "3 1" -> {
+            if (list[7] == "O" || list[7] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[7] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "3 2" -> {
+            if (list[8] == "O" || list[8] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[8] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "3 3" -> {
+            if (list[9] == "O" || list[9] == "X") {
+                println("This cell is occupied! Choose another one!")
+                game(list)
+            } else
+                list[9] = xOtherO(list)
+            grid(list)
+            wins(list)
+            check(list)
+        }
+
+        "one", "one one", "two two", "two" -> {
+            println("You should enter numbers!")
+            game(list)
+        }
+
+        else -> {
+            println("Coordinates should be from 1 to 3!")
+            game(list)
+        }
+
+    }
+}
+
+fun main() {
+    val list: MutableList<String> = "          ".split("").map { it }.toMutableList()
+    gridStart(list)
+    while (true) {
+        game(list)
+    }
+}
+
